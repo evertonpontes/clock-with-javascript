@@ -1,32 +1,106 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
+
+:root {
+  --background: hsl(240, 24%, 94%);
+  --text-color: rgb(27, 26, 36);
+  --slide-color: #fff;
+  --box-shadow: 0.5rem 0.5rem 1.5rem rgba(0, 0, 0, 0.3),
+    inset 0.15rem 0.15rem 0.45rem rgba(255, 255, 255, 0.08);
+  --seconds-hand-color: rgba(255, 0, 25, 0.8);
+  --text-shadow: 0;
+  --theme-slider-shadow: 0 0 1rem rgba(255, 5, 45, 0.8);
+}
+.dark {
+  --background: hsl(240, 24%, 15%);
+  --text-color: hsl(240, 24%, 94%);
+  --slide-color: hsl(240, 22%, 19%);
+  --seconds-hand-color: rgba(65, 245, 255, 0.8);
+  --text-shadow: 0 0 1rem rgba(88, 255, 255, 0.8),
+    0 0 2rem rgba(65, 245, 255, 0.5);
+  --theme-slider-shadow: 0 0 1rem rgba(65, 245, 255, 0.8);
+}
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 body {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background-color: hsl(240, 24%, 94%);
+  background-color: var(--background);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
-.analog__clock {
+.analog__clock,
+.digital__clock {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.analog__clock {
+  gap: 5rem;
+}
+
+.analog__clock .slider__body {
+  width: 76px;
+  height: 44px;
+  border: none;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+  padding: 6px;
+}
+
+.slider__body .slider {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.slider .theme {
+  width: 32px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--slide-color);
+  box-shadow: var(--box-shadow);
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+  position: absolute;
+  left: 0;
+}
+
+.slider .theme:hover {
+  background-color: var(--seconds-hand-color);
+  box-shadow: var(--theme-slider-shadow);
+}
+
+.theme .icon {
+  color: var(--text-color);
 }
 
 .clock__circle {
   width: 300px;
   height: 300px;
-  box-shadow: 0.5rem 0.5rem 1.5rem hsla(0, 0%, 0%, 0.2),
-    -0.5rem -0.5rem 1.5rem #fff, inset -0.25rem -0.25rem 1rem #fff,
-    inset 0.25rem 0.25rem 1rem hsla(0, 0%, 0%, 0.2);
+  box-shadow: var(--box-shadow);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -37,7 +111,7 @@ body {
   content: "";
   width: 1rem;
   height: 1rem;
-  background: rgb(27, 26, 36);
+  background: var(--text-color);
   position: absolute;
   top: 47%;
   left: 47%;
@@ -65,29 +139,29 @@ body {
   content: "";
   height: 5rem;
   width: 8px;
-  background-color: rgb(27, 26, 36);
-  box-shadow: 2px 1px 2px rgba(27, 26, 36, 0.3);
+  background-color: var(--text-color);
+  box-shadow: 2px 1px 2px rgba(27, 26, 36, 0.5);
 }
 
 .times__hand .minutes {
   content: "";
   height: 7rem;
   width: 8px;
-  background-color: rgb(27, 26, 36);
-  box-shadow: 2px 1px 2px rgba(27, 26, 36, 0.3);
+  background-color: var(--text-color);
+  box-shadow: 2px 1px 2px rgba(27, 26, 36, 0.5);
 }
 
 .times__hand .seconds {
   content: "";
   height: 8.5rem;
   width: 2px;
-  background-color: rgba(255, 0, 0, 0.8);
-  box-shadow: 2px 1px 2px rgba(27, 26, 36, 0.3);
+  background-color: var(--seconds-hand-color);
+  box-shadow: 2px 1px 2px rgba(27, 26, 36, 0.5), var(--text-shadow);
 }
 
 .clock__circle .number {
   --rotation: 0;
-  color: rgb(27, 26, 36);
+  color: var(--text-color);
   font-weight: 700;
   padding-top: 0.15rem;
   width: 100%;
@@ -129,4 +203,46 @@ body {
 }
 .clock__circle .number11 {
   --rotation: 330deg;
+}
+
+.digital__screen {
+  padding: 0.5rem 0.75rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+}
+
+.digital__screen .time {
+  min-width: 90px;
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-shadow: var(--text-shadow);
+}
+
+.digital__screen .time::after {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.digital__screen .hour::after {
+  content: "hour";
+}
+.digital__screen .minute::after {
+  content: "minute";
+}
+.digital__screen .seconds::after {
+  content: "seconds";
 }

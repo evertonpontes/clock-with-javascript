@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <title>Modern Clock</title>
@@ -11,21 +16,44 @@
   <body>
     <section class="analog__clock">
       <div class="clock__circle">
-        <span class="number number1">I</span><span class="number number2">II</span
-        ><span class="number number3">III</span><span class="number number4">IV</span
-        ><span class="number number5">V</span><span class="number number6">VI</span
-        ><span class="number number7">VII</span><span class="number number8">VIII</span
-        ><span class="number number9">IX</span><span class="number number10">X</span
-        ><span class="number number11">XI</span><span class="number number12">XII</span>
-        
+        <span class="number number1">I</span
+        ><span class="number number2">II</span
+        ><span class="number number3">III</span
+        ><span class="number number4">IV</span
+        ><span class="number number5">V</span
+        ><span class="number number6">VI</span
+        ><span class="number number7">VII</span
+        ><span class="number number8">VIII</span
+        ><span class="number number9">IX</span
+        ><span class="number number10">X</span
+        ><span class="number number11">XI</span
+        ><span class="number number12">XII</span>
+
         <div class="times__hand">
           <div class="times hours" id="h_hand"></div>
           <div class="times minutes" id="m_hand"></div>
           <div class="times seconds" id="s_hand"></div>
         </div>
       </div>
+      <div class="slider__body">
+        <div class="slider">
+          <button class="theme" id="theme" onclick="changeTheme()">
+            <span id="theme_icon" class="icon material-symbols-outlined">
+              dark_mode
+            </span>
+          </button>
+        </div>
+      </div>
     </section>
-    <section class="digital__clock"></section>
+    <section class="digital__clock">
+      <div class="digital__screen">
+        <span class="time hour" id="hour_view">00</span
+        ><span class="time">:</span
+        ><span class="time minute" id="minute_view">00</span
+        ><span class="time">:</span
+        ><span class="time seconds" id="seconds_view">00</span>
+      </div>
+    </section>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
